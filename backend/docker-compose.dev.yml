@@ -7,9 +7,9 @@ services:
     ports:
       - 5432:5432
     environment:
-      - POSTGRES_DB=eftekharmodiran_backend
+      - POSTGRES_DB=ooproject
       - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=eftekharmodiran@1402
+      - POSTGRES_PASSWORD=ooprojectpass
     volumes:
       - postgres-data:/var/lib/postgresql/data/
 
