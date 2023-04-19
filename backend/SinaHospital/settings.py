@@ -3,6 +3,9 @@
 from pathlib import Path
 import globals
 import os
+import environ
+
+env = environ.Env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,6 +39,7 @@ INSTALLED_APPS = [
     'core',
     'main',
     'durationwidget',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +72,8 @@ TEMPLATES = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
     ),
@@ -85,14 +91,17 @@ CORS_ORIGIN_WHITELIST = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ooprojectdb',
-        'USER': 'admin',
-        'PASSWORD': 'ooprojectpass',
-        'HOST': 'db',
-        'PORT': '5432',
-    }
+    'default': env.db('DATABASE_URL', default='psql://admin:ooprojectpass@127.0.0.1:5432/ooproject'),
+}
+DATABASES['default']['ATOMIC_REQUESTS'] = True
+
+
+# swagger
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'ooproject API',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
 }
 
 
