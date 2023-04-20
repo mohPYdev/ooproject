@@ -8,6 +8,7 @@ import Navbarc from './section/Navbarc';
 import { useAuthContext } from './hooks/useAuthContext';
 import Login from './pages/Login'
 import SignUp from './pages/SignUp';
+import Reservation from './pages/Reservation';
 function App() {
   const { user, authIsReady } = useAuthContext()
   return (
@@ -39,8 +40,11 @@ function App() {
               element={user
               ? <Home/>
               : <Navigate to="/login"/>}/>
+              <Route
+              path='/reservation'
+              element={<Reservation/>} />
             {/* <Route
-              path='/reservation/:id'
+              path='/reservation'
               element={user
               ? <Reservation/>
               : <Navigate to="/login"/>}/> */}
