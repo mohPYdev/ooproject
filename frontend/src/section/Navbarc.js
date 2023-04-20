@@ -3,8 +3,12 @@ import { Link } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-
+import Login from '../pages/Login'
+import SignUp from '../pages/SignUp';
+import Reservation from '../pages/Reservation';
 import { useAuthContext } from '../hooks/useAuthContext'
+import Home from '../pages/Home';
+import Profile from  '../pages/Profile'
 // import { useLogout} from '../hooks/useLogout'
 
 export default function Navbarc() {
@@ -20,11 +24,13 @@ export default function Navbarc() {
         <>
           <Navbar bg="dark" variant="dark">
             <Container>
-              <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            {!user ?<Navbar.Brand href={<Home/>}>بیمارستان</Navbar.Brand> : <></>}
               <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                {user ? <Nav.Link href={'/home'}>خانه</Nav.Link> : <></>}
+                {!user ? <Nav.Link href={'/signup'}>ثبت نام</Nav.Link> : <></>}
+                {!user ? <Nav.Link href={'/login'}>ورود</Nav.Link> : <></>}
+                {/* {user ? <Nav.Link href={'/profile'}>پروفایل</Nav.Link> : <></>} */}
+                {/* {user ? <Nav.Link href={'/reservation'}>رزرواسیون</Nav.Link> : <></>} */}
               </Nav>
             </Container>
           </Navbar>

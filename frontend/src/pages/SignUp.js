@@ -32,7 +32,7 @@ function SignUp() {
     clearForm()
   }
     return (<>
-    <div className="auth-wrapper signup">
+    <div className="auth-wrapper signup text-end">
       <div className="auth-inner" id='form'>
         <form onSubmit={handleSubmit} className='p-3 bg-white rounded-3'>
           <h3 className='text-center fw-bold'>ثبت نام</h3>
@@ -44,8 +44,8 @@ function SignUp() {
                 </label>
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder="username"
+                  className="form-control text-end"
+                  placeholder="نام کاربری"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}/>
               </div>
@@ -55,8 +55,8 @@ function SignUp() {
                 <label className='fw-bold'>ایمیل</label>
                 <input
                   type="email"
-                  className="form-control"
-                  placeholder="email"
+                  className="form-control text-end"
+                  placeholder="ایمیل"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}/>
               </div>
@@ -68,8 +68,8 @@ function SignUp() {
                 <label className='fw-bold'>رمز عبور</label>
                 <input
                   type="password"
-                  className="form-control"
-                  placeholder="password"
+                  className="form-control text-end"
+                  placeholder="رمز عبور"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}/>
               </div>
@@ -79,8 +79,8 @@ function SignUp() {
                 <label className='fw-bold'>شماره تلفن</label>
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder="phone number"
+                  className="form-control text-end"
+                  placeholder="شماره تلفن"
                   value={phone_number}
                   onChange={(e) => setPhoneNumber(e.target.value)}/>
               </div>
