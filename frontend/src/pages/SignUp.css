@@ -1,0 +1,14 @@
+.signup .auth-inner{
+    width: 700px;
+  }
+
+.signup{
+    margin-top: 0px !important;
+}
+
+#form{
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(0, -50%);
+}
