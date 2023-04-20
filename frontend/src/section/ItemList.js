@@ -7,8 +7,11 @@ function ItemList() {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        if (data)
+        if (data){
             setItems(data)
+            console.log(data)
+        }
+
     }, [data])
     return (
             <div >
