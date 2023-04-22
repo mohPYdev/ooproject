@@ -30,8 +30,7 @@ export default function Navbarc() {
                 {!user ? <Nav.Link href={'/signup'}>ثبت نام</Nav.Link> : <></>}
                 {!user ? <Nav.Link href={'/login'}>ورود</Nav.Link> : <></>}
                 {user ? <Nav.Link href={'/login'} onClick={handleClick}>خروج</Nav.Link> : <></>}
-                {/* {user ? <Nav.Link href={'/profile'}>پروفایل</Nav.Link> : <></>} */}
-                {/* {user ? <Nav.Link href={'/reservation'}>رزرواسیون</Nav.Link> : <></>} */}
+                {user ? <Nav.Link href={'/profile'}>پروفایل</Nav.Link> : <></>}
               </Nav>
             </Container>
           </Navbar>

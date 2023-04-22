@@ -35,19 +35,19 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        choose a time
+        انتخاب زمان
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Choose a time</Modal.Title>
+          <Modal.Title >زمان های در دسترس</Modal.Title>
         </Modal.Header>
         <Modal.Body>
               <div className='row'>
                 {freetimes && freetimes.map((ft) => (
-                  <div key={ft.start} className="col-2 mx-2">
+                  <div key={ft.start} className="col-2 mx-2 ">
                       <button
-                        className='btn btn-light btn-sm mt-2'
+                        className='btn btn-light btn-sm mt-2 mx-2'
                         value={ft.start.slice(0,16)}
                         onClick={(e) => {
                           setTime(e.target.value);

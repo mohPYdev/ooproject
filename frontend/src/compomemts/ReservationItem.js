@@ -64,7 +64,7 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
     },[service, shift, time_date])
 
   return (
-      <tr>
+      <tr >
         <td>
           <div className="d-flex align-items-center">
 
@@ -95,7 +95,7 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
         </td>
 
         <td>
-          {!passed && <button type="button" class="btn btn-danger" onClick={(e) => handleDelete(e)}>Delete</button>}
+          {!passed && <button type="button" class="btn btn-danger" onClick={(e) => handleDelete(e)}>حذف</button>}
         </td>
       </tr>
   )

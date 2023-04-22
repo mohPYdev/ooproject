@@ -48,7 +48,7 @@ export default function Reservation() {
           {/* {doctor && <h3>{doctor.name}</h3>} */}
         </div>
 
-        {shifts?.results?.length === 0 && <h3 className='d-flex justify-content-center text-white mt-5'>Not Availbale Now !</h3>}
+        {shifts?.results?.length === 0 && <h3 className='d-flex justify-content-center text-white mt-5'>اکنون در دسترس نیست !</h3>}
         <div className='row'>
           {shifts && shifts.results?.map((item) => (
           // {doctor && doctor.services.map((item) => (

@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
 import './Profile.css'
-import {useAuthContext} from '../hooks/useAuthContext'
-import {useFetch} from '../hooks/useFetch'
-import {LocalUrl} from '../utils/constant'
+import { useAuthContext } from '../hooks/useAuthContext'
+import { useFetch } from '../hooks/useFetch'
+import { LocalUrl } from '../utils/constant'
 import ReservationItem from '../compomemts/ReservationItem'
 
 export default function Profile() {
 
-  const {user} = useAuthContext()
-  const {data: reservations} = useFetch(LocalUrl + "reservations/")
+  const { user } = useAuthContext()
+  const { data: reservations } = useFetch(LocalUrl + "reservations/")
   const [reserveList, setReserveList] = useState([])
 
   const deleteItem = (id) => {
@@ -23,33 +23,33 @@ export default function Profile() {
   }, [reservations])
 
   return (
-    <div className='profile'>
+    <div className='profile text-end'>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
-          <div className="col col-xl-10">
+          <div className="col col-xl-5">
             <div className="card mb-5">
               <div className="card-body p-4">
-                <h3 className="mb-3">Personal Information</h3>
-                <hr className="my-4"/>
+                <h3 className="mb-3">اطلاعات شخصی</h3>
+                <hr className="my-4" />
                 <div className="align-items-center">
                   <ul className="list-group list-group-light">
                     <li
                       className="list-group-item d-flex justify-content-between align-items-center">
-                      username
+                      نام کاربری
                       <p>{user
-                          ?.username}</p>
+                        ?.username}</p>
                     </li>
                     <li
                       className="list-group-item d-flex justify-content-between align-items-center">
-                      email
+                      ایمیل
                       <p>{user
-                          ?.email}</p>
+                        ?.email}</p>
                     </li>
                     <li
                       className="list-group-item d-flex justify-content-between align-items-center">
-                      phone number
+                      تلفن همراه
                       <p>{user
-                          ?.phone_number}</p>
+                        ?.phone_number}</p>
                     </li>
                   </ul>
                   {/* <div className='d-flex justify-content-center mt-3'>
@@ -58,18 +58,20 @@ export default function Profile() {
                 </div>
               </div>
             </div>
+          </div>
+          <div className="col col-xl-5">
 
             <div className="card">
               <div className="card-body p-4">
-                <h3 className="mb-3">Reservations</h3>
-                <hr className="my-4"/>
+                <h3 className="mb-3">رزرو های انجام شده</h3>
+                <hr className="my-4" />
                 <table className="table align-middle mb-0 mt-5 bg-white">
                   <thead className="bg-light">
                     <tr>
-                      <th>Item</th>
-                      <th>Service</th>
-                      <th>Time</th>
-                      <th>code</th>
+                      <th>محصول</th>
+                      <th>سرویس</th>
+                      <th>زمان</th>
+                      <th>کد تائید</th>
 
                     </tr>
                   </thead>

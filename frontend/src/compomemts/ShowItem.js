@@ -17,7 +17,7 @@ export default function ShowItem({doc_id}) {
 
   return (
     <div>
-        <div className='img-container'><img className="card-img-top" src={item?.image} alt="Card image cap" /></div>
+        <div className='img-container'><img className="card-img-top" src={item?.image} alt="تصویری برای این سرویس در دسترس نیست" /></div>
         <p className="h5">{item?.first_name}  {item?.last_name}</p>
         <p className="card-subtitle text-muted">{item?.category}</p>
         <p className='mt-3'><em>{item?.description}</em></p>
