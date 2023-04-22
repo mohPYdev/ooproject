@@ -40,14 +40,11 @@ function App() {
               element={user
               ? <Home/>
               : <Navigate to="/login"/>}/>
-              <Route
-              path='/reservation'
-              element={<Reservation/>} />
-            {/* <Route
-              path='/reservation'
+            <Route
+              path='/reservation/:id'
               element={user
               ? <Reservation/>
-              : <Navigate to="/login"/>}/> */}
+              : <Navigate to="/login"/>}/>
             {/* <Route
               path='/profile'
               element={user

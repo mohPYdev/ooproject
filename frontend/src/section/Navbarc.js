@@ -26,10 +26,11 @@ export default function Navbarc() {
             <Container>
             {!user ?<Navbar.Brand href={<Home/>}>بیمارستان</Navbar.Brand> : <></>}
               <Nav className="me-auto">
-                {!user ? <Nav.Link href={'/home'}>خانه</Nav.Link> : <></>}
+                {user ? <Nav.Link href={'/home'}>خانه</Nav.Link> : <></>}
                 {!user ? <Nav.Link href={'/signup'}>ثبت نام</Nav.Link> : <></>}
                 {!user ? <Nav.Link href={'/login'}>ورود</Nav.Link> : <></>}
-                {user ? <Nav.Link href={'/profile'}>پروفایل</Nav.Link> : <></>}
+                {/* {user ? <Nav.Link href={'/profile'}>پروفایل</Nav.Link> : <></>} */}
+                {/* {user ? <Nav.Link href={'/reservation'}>رزرواسیون</Nav.Link> : <></>} */}
               </Nav>
             </Container>
           </Navbar>
