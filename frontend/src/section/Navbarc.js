@@ -9,15 +9,15 @@ import Reservation from '../pages/Reservation';
 import { useAuthContext } from '../hooks/useAuthContext'
 import Home from '../pages/Home';
 import Profile from  '../pages/Profile'
-// import { useLogout} from '../hooks/useLogout'
+import { useLogout} from '../hooks/useLogout'
 
 export default function Navbarc() {
 
   const {user} = useAuthContext()
-//   const {logout } = useLogout()
+  const {logout } = useLogout()
 
   const handleClick = () => {
-    // logout()
+    logout()
   }
 
   return (
@@ -29,6 +29,7 @@ export default function Navbarc() {
                 {user ? <Nav.Link href={'/home'}>خانه</Nav.Link> : <></>}
                 {!user ? <Nav.Link href={'/signup'}>ثبت نام</Nav.Link> : <></>}
                 {!user ? <Nav.Link href={'/login'}>ورود</Nav.Link> : <></>}
+                {user ? <Nav.Link href={'/login'} onClick={handleClick}>خروج</Nav.Link> : <></>}
                 {/* {user ? <Nav.Link href={'/profile'}>پروفایل</Nav.Link> : <></>} */}
                 {/* {user ? <Nav.Link href={'/reservation'}>رزرواسیون</Nav.Link> : <></>} */}
               </Nav>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
-import { LocalUrl } from '../../urls/urls'
+import { useFetch } from '../hooks/useFetch'
+import { LocalUrl } from '../utils/constant'
 
 export default function ResetPassConfirm() {
 

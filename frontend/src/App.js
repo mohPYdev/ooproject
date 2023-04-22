@@ -9,6 +9,9 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Login from './pages/Login'
 import SignUp from './pages/SignUp';
 import Reservation from './pages/Reservation';
+import Profile from './pages/Profile';
+import ResetPass from './pages/ResetPass';
+import ResetPassConfirm from './pages/ResetPassConfirm';
 function App() {
   const { user, authIsReady } = useAuthContext()
   return (
@@ -45,21 +48,21 @@ function App() {
               element={user
               ? <Reservation/>
               : <Navigate to="/login"/>}/>
-            {/* <Route
+            <Route
               path='/profile'
               element={user
               ? <Profile/>
-              : <Navigate to="/login"/>}/> */}
-            {/* <Route
+              : <Navigate to="/login"/>}/>
+            <Route
               path='/password/reset'
               element={!user
               ? <ResetPass/>
-              : <Navigate to="/home"/>}/> */}
-            {/* <Route
+              : <Navigate to="/home"/>}/>
+            <Route
               path='/password/reset/confirm/:uid/:token'
               element={!user
               ? <ResetPassConfirm/>
-              : <Navigate to="/home"/>}/> */}
+              : <Navigate to="/home"/>}/>
 
           </Routes>
         </div>

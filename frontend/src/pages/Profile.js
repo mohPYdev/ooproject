@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
 import './Profile.css'
-import {useAuthContext} from '../../hooks/useAuthContext'
-import {useFetch} from '../../hooks/useFetch'
-import {LocalUrl} from '../../urls/urls'
-import ReservationItem from '../../components/ReservationItem'
+import {useAuthContext} from '../hooks/useAuthContext'
+import {useFetch} from '../hooks/useFetch'
+import {LocalUrl} from '../utils/constant'
+import ReservationItem from '../compomemts/ReservationItem'
 
 export default function Profile() {
 
@@ -76,25 +76,25 @@ export default function Profile() {
                   <tbody>
 
                     {reserveList && reserveList.map((reserv) => (
-                      
-                      
+
+
                       <ReservationItem
 
                         key={reserv.id}
                         res_id={reserv.id}
-                        doc_id={reserv.item} 
-                        shift_id={reserv.shift} 
-                        service_id={reserv.service} 
+                        doc_id={reserv.item}
+                        shift_id={reserv.shift}
+                        service_id={reserv.service}
                         time_date={reserv.time_date.slice(0, 16)}
                         code={reserv.code}
 
                         deleteItem={deleteItem}
                       />
-                      
+
 
                     ))}
 
-                    
+
 
                   </tbody>
                 </table>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import './ReservationItem'
 
-import { LocalUrl } from '../urls/urls'
+import { LocalUrl } from '../utils/constant'
 import { useFetch } from '../hooks/useFetch'
 
 
@@ -26,7 +26,7 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
     useEffect(() => {
         if (data) {
             deleteItem(res_id)
-        }       
+        }
     }, [data, deleteItem, res_id]);
 
     useEffect(() => {
@@ -39,14 +39,14 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
             day: "numeric"
             }).format(date);
             setInfo(faDate)
-            
+
         const td = new Date(`${time_date}`);
             const ftd = new Intl.DateTimeFormat("en", {
             hour: "2-digit",
             minute: "2-digit"
             }).format(td);
             setTd(ftd)
-            
+
         const sd = new Date(`2022-4-4 ${service.duration}`);
             const fsd = new Intl.DateTimeFormat("en-US", {
             hour: "numeric",
@@ -54,12 +54,12 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
             hour12:false,
             }).format(sd);
             setSd(fsd)
-          
+
         if (new Date(Date.now()) > new Date(time_date)){
           setPassed(true)
         }
-        
-          
+
+
       }
     },[service, shift, time_date])
 

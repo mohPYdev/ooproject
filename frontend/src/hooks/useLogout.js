@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useAuthContext } from './useAuthContext'
 import axios from 'axios'
-import { LocalUrl } from '../urls/urls'
+import { LocalUrl } from '../utils/constant'
 
 export const useLogout = () => {
   const [isCancelled, setIsCancelled] = useState(false)
@@ -10,13 +10,13 @@ export const useLogout = () => {
   const { dispatch} = useAuthContext()
 
   const LOGOUT_URL = LocalUrl +  "auth/token/logout/"
-  
+
   const logout = async () => {
     setError(null)
     setIsPending(true)
 
     try {
-      
+
       await axios.post(LOGOUT_URL)
 
       // Clear the user from local storage and headers
@@ -32,8 +32,8 @@ export const useLogout = () => {
       if (!isCancelled) {
         setIsPending(false)
         setError(null)
-      } 
-    } 
+      }
+    }
     catch(err) {
       if (!isCancelled) {
         setError(err.message)
