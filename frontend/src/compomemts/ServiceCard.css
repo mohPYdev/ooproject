@@ -23,3 +23,14 @@
     background-color: rgb(207, 22, 22) !important;
     opacity: 0.9 !important;
 }
+
+.serviceCardTransitions{
+    -webkit-transition: -webkit-transform 0.5s, opacity 2s, width 5s;
+    transition: width 5s;
+}
+.serviceCardTransitions:hover{
+    width: 100%;
+    align-self: center;
+    opacity: 0.5;
+    transform: rotateY(360deg);
+}

@@ -104,10 +104,11 @@ export default function ServiceCard({shift, serv_id}) {
           <hr></hr>
           <ShowItem doc_id={shift?.item} />
           {available && !is_full && <SelectTime id={shift.id} setIsFull={setIsFull} service_id={serv_id} setTime={setTime} setTimePicked={setTimePicked} /> }
-          {timePicked && <label className='float-right btn btn-outline-dark btn-sm mx-2'>{time}</label>}
+          <br/>
+          {timePicked && <label className='float-right btn btn-outline-dark btn-sm mx-2 serviceCardTransitions'>{time}</label>}
 
         </div>
-        {timePicked && <button className='btn btn-success' onClick={handleReserve}>ذخیره</button>}
+        {timePicked && <button className='btn btn-success serviceCardTransitions' onClick={handleReserve}>ذخیره</button>}
       </div>
   )
 }
