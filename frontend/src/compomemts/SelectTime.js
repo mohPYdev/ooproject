@@ -34,7 +34,8 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+    <div>
+      <Button className='chooseTime' variant="primary" onClick={handleShow}>
         انتخاب زمان
       </Button>
 
@@ -69,6 +70,7 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
 
         </Modal.Body>
       </Modal>
+      </div>
     </>
   )
 }
