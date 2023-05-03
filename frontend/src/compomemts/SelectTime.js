@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import './SelectTime.css'
+import './ServiceCard.css'
 
 import { useState } from 'react';
 
@@ -35,7 +36,7 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
   return (
     <>
     <div>
-      <Button className='chooseTime' variant="primary" onClick={handleShow}>
+      <Button className='chooseTime serviceCardTransitions' variant="primary" onClick={handleShow}>
         انتخاب زمان
       </Button>
 
@@ -48,7 +49,7 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
                 {freetimes && freetimes.map((ft) => (
                   <div key={ft.start} className="col-2 mx-2 ">
                       <button
-                        className='btn btn-light btn-sm mt-2 mx-2'
+                        className='btn btn-light btn-sm mt-2 mx-2 serviceCardTransitions'
                         value={ft.start.slice(0,16)}
                         onClick={(e) => {
                           setTime(e.target.value);
