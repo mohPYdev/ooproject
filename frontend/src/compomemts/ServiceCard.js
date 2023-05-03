@@ -97,6 +97,7 @@ export default function ServiceCard({shift, serv_id}) {
           <Navbar className=''>
             <h6 className="card-subtitle mb-2 text-muted">{start_t} - {end_t}</h6>
           </Navbar>
+          <br/>
           {available && !is_full && <span className='btn btn-success btn-sm disabled btn-success-color'>در دسترس</span>}
           {!available && !is_full && <span className='btn btn-danger btn-sm disabled btn-danger-color'>غیر قابل دسترس</span>}
           {is_full && <span className='btn btn-danger btn-sm disabled '>پر شده</span> }
