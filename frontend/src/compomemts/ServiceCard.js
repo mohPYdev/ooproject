@@ -91,18 +91,19 @@ export default function ServiceCard({shift, serv_id}) {
 
       <div className="card text-end">
         <div className="card-body">
-          <Navbar className='bg-light'>
+          {/* <Navbar className='bg-light'>
             <h5 className="card-title">{date}</h5>
           </Navbar>
           <Navbar className=''>
             <h6 className="card-subtitle mb-2 text-muted">{start_t} - {end_t}</h6>
           </Navbar>
-          <br/>
+          <br/> */}
+
+          <ShowItem doc_id={shift?.item} />
           {available && !is_full && <span className='btn btn-success btn-sm disabled btn-success-color'>در دسترس</span>}
           {!available && !is_full && <span className='btn btn-danger btn-sm disabled btn-danger-color'>غیر قابل دسترس</span>}
           {is_full && <span className='btn btn-danger btn-sm disabled '>پر شده</span> }
           <hr></hr>
-          <ShowItem doc_id={shift?.item} />
           {available && !is_full && <SelectTime id={shift.id} setIsFull={setIsFull} service_id={serv_id} setTime={setTime} setTimePicked={setTimePicked} /> }
           <br/>
           {timePicked && <label className='float-right btn btn-outline-dark btn-sm mx-2 serviceCardTransitions'>{time}</label>}

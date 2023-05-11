@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import { LocalUrl } from "../utils/constant";
+import { LocalUrl,RequestTimeOut } from "../utils/constant";
 
 export const useSignup = () => {
+  const navigate = useNavigate()
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
-  const navigate = useNavigate();
 
   const SIGNUP_URL = LocalUrl + "auth/users/";
 
@@ -23,6 +23,7 @@ export const useSignup = () => {
     setError(null);
     setIsPending(true);
 
+
     try {
       // signup
       const res = await axios.post(SIGNUP_URL, {
@@ -33,27 +34,28 @@ export const useSignup = () => {
         last_name,
         phone_number
       });
-
-      if (!res) {
-        throw new Error("Could not complete signup");
-      }
-
-      navigate("/login");
-      if (!isCancelled) {
+      setTimeout(() => {
         setIsPending(false);
+      }, RequestTimeOut);
+
+
         setError(null);
-      }
+        navigate('/login')
+
     } catch (err) {
-      if (!isCancelled) {
+      console.log(err)
         setError(err.response.data)
-        setIsPending(false);
-      }
+        setTimeout(() => {
+          setIsPending(false);
+        }, RequestTimeOut);
+
+
     }
   };
 
-  useEffect(() => {
-    return () => setIsCancelled(true);
-  }, []);
+  // useEffect(() => {
+  //   return () => setIsCancelled(true);
+  // }, []);
 
   return { signup, error, isPending };
 };
