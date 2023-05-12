@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
+//https://testing-library.com/docs/react-testing-library
+import { render, screen } from './testUtils';
 import App from './App';
 
-test('renders learn react link', () => {
+test('signup', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText('ثبت نام');
+  expect(linkElement).toBeInTheDocument();
+});
+test('logo', () => {
+  render(<App />);
+  const linkElement = screen.getByText(('بیمارستان'));
   expect(linkElement).toBeInTheDocument();
 });
