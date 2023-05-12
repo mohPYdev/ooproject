@@ -21,14 +21,14 @@ const Home = () => {
         <div className='home'>
             <div className='container'>
                 <div className='row'>
-                    {items && items.map((doc) => (
+                    {items ? items.map((doc) => (
                         <div className='col-md-4 ' style={{
                             width: '18rem' ,
                             margin: '40px'
                         }} key={doc.id}>
                             <ItemCard id={doc.id} />
                         </div>
-                    ))}
+                    )):null}
                 </div>
             </div>
         </div>
