@@ -163,13 +163,16 @@ class ReservationAdmin(admin.ModelAdmin):
     list_filter = ('item',)
     actions = [make_archive]
 
-    def get_queryset(self, request):
-        return super().get_queryset(request).filter(
+    def get_queryset(self, request):      
+        qs = super().get_queryset(request).filter( 
             Q(is_archive=False) 
             & 
             ~Q(status='not accepted')
         )
-
+        if not request.user.is_superuser:
+            return qs.filter(item__name= request.user.username)
+        else:
+            return qs
 
 class UserAdminCustom(UserAdmin):
     list_display = ('username', 'email', 'phone_number')
