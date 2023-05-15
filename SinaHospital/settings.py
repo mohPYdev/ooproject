@@ -4,6 +4,8 @@ from pathlib import Path
 import globals
 import os
 import environ
+import sys
+import dj_database_url
 
 env = environ.Env()
 
@@ -27,7 +29,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'jazzmin',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -93,10 +94,13 @@ CORS_ORIGIN_WHITELIST = (
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': env.db('DATABASE_URL', default='psql://admin:ooprojectpass@127.0.0.1:5432/ooproject'),
-}
-DATABASES['default']['ATOMIC_REQUESTS'] = True
+if 'test' in sys.argv:
+    DATABASES = {'default': dj_database_url.config(default='sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3'))}
+else:
+    DATABASES = {
+        'default': env.db('DATABASE_URL', default='psql://admin:ooprojectpass@127.0.0.1:5432/ooproject'),
+    }
+    DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 
 # swagger
