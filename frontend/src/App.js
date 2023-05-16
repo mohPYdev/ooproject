@@ -1,8 +1,6 @@
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import './App.css';
-import ItemCard from './compomemts/ItemCard'
-import ItemList from './section/ItemList';
 import Home from './pages/Home'
 import Navbarc from './section/Navbarc';
 import { useAuthContext } from './hooks/useAuthContext';

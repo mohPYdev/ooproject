@@ -18,11 +18,11 @@ const Home = () => {
     },[data])
 
     return (
-        <div className='home'>
+        <div data-testid='home' className='home'>
             <div className='container'>
                 <div className='row'>
                     {items ? items.map((doc) => (
-                        <div className='col-md-4 ' style={{
+                        <div data-testid='item-card' className='col-md-4 ' style={{
                             width: '18rem' ,
                             margin: '40px'
                         }} key={doc.id}>
