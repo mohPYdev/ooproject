@@ -4,16 +4,16 @@ import { Link } from 'react-router-dom'
 function Itemcard({id}) {
     const {data:service, isPending, error} = useFetch(LocalUrl + `services/${id}/`)
     return (
-        <div class="card text-center">
-            <div class="card-header">
+        <div className="card text-center">
+            <div className="card-header">
             {service?.name} : نام
             </div>
-            <div class="card-body">
-                <h5 class="card-title">{service?.subtitle} : نوع </h5>
-                <p class="card-text">قیمت : {service?.price}</p>
+            <div className="card-body">
+                <h5 className="card-title">{service?.subtitle} : نوع </h5>
+                <p className="card-text">قیمت : {service?.price}</p>
                 <Link to={`/reservation/${id}`} className="btn btn-primary">انتخاب</Link>
             </div>
-            <div class="card-footer text-body-secondary">
+            <div className="card-footer text-body-secondary">
             مدت زمان : {service?.duration}
             </div>
         </div>

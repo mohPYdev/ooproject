@@ -10,9 +10,10 @@ import Modal from 'react-bootstrap/Modal';
 import { LocalUrl } from '../utils/constant'
 import { useFetch } from '../hooks/useFetch'
 
-export default function SelectTime({id, service_id, setTime, setTimePicked, setIsFull}) {
+export default function SelectTime({id, service_id, setTime, setTimePicked, setIsFull,showbtn}) {
 
   const {data:freetimes} = useFetch(LocalUrl + `shifts/${id}/free_time/${service_id}/`)
+  console.log(freetimes)
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -36,7 +37,7 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
   return (
     <>
     <div>
-      <Button className='chooseTime serviceCardTransitions' variant="primary" onClick={handleShow}>
+      <Button className='chooseTime serviceCardTransitions' variant="primary" disabled={!showbtn} onClick={handleShow}>
         انتخاب زمان
       </Button>
 
@@ -56,13 +57,20 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
                           setShow(false);
                           setTimePicked(true)
                         }}>
+                          {/* {console.log(ft.start.slice(14,16))} */}
+                          {
+                            
+                          }
+                          {/* {console.log(ft.start.slice(11,13))} */}
                           {new Intl.DateTimeFormat('en', {
                               hour:"2-digit",
                               minute:"2-digit"
 
-                          }).format(
-                            new Date(ft.start.slice(0,16))
-                          )}
+                          })
+                          .format(
+                            new Date(ft.start.slice(0,16)).setTime (new Date(ft.start.slice(0,16)).getTime () + (3*60*60*1000) + (30*60*1000)) // add 3 hours and 30 minutes
+                          )
+                          }
                       </button>
                   </div>
                 ))}

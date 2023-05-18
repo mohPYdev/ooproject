@@ -100,11 +100,11 @@ export default function ServiceCard({shift, serv_id}) {
           <br/> */}
 
           <ShowItem doc_id={shift?.item} />
-          {available && !is_full && <span className='btn btn-success btn-sm disabled btn-success-color'>در دسترس</span>}
-          {!available && !is_full && <span className='btn btn-danger btn-sm disabled btn-danger-color'>غیر قابل دسترس</span>}
-          {is_full && <span className='btn btn-danger btn-sm disabled '>پر شده</span> }
+          {available && !is_full && <span style={{width:'100%'}} className='btn btn-success btn-sm disabled btn-success-color'>در دسترس</span>}
+          {!available && !is_full && <span style={{width:'100%'}} className='btn btn-danger btn-sm disabled btn-danger-color'>غیر قابل دسترس</span>}
+          {is_full && <span style={{width:'100%'}} className='btn btn-danger btn-sm disabled '>پر شده</span> }
           <hr></hr>
-          {available && !is_full && <SelectTime id={shift.id} setIsFull={setIsFull} service_id={serv_id} setTime={setTime} setTimePicked={setTimePicked} /> }
+          <SelectTime id={shift.id} setIsFull={setIsFull} service_id={serv_id} setTime={setTime} setTimePicked={setTimePicked} showbtn={available && !is_full}/>
           <br/>
           {timePicked && <label className='float-right btn btn-outline-dark btn-sm mx-2 serviceCardTransitions'>{time}</label>}
 

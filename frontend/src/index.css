@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
 * {
   box-sizing: border-box;
 
@@ -9,15 +9,15 @@ body {
   background: url("../public/health-still-life-with-copy-space.jpg") no-repeat;
   background-color: #AAD6D7;
   background-size: 100%;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   /* display: flex; */
   font-weight: 400;
-  font-family: 'Fira Sans', sans-serif;
+  /* font-family: 'Vazir', sans-serif; */
   /* padding-top: 60px; */
 }
 h1,h2,h3,h4,h5,h6,label,span {
   font-weight: 500;
-  font-family: 'Fira Sans', sans-serif;
+  /* font-family: 'Fira Sans', sans-serif; */
 }
 body, html, .App, #root, .auth-wrapper {
   width: 100%;
@@ -42,6 +42,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
   -moz-appearance: textfield;
-}
+} */
