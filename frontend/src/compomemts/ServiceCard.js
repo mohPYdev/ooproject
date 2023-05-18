@@ -75,10 +75,10 @@ export default function ServiceCard({shift, serv_id}) {
       if (!shift.is_available) {
         setAvailable(false)
       }
-
     }
   },[shift])
 
+  
 
 
   useEffect(() => {
@@ -104,10 +104,9 @@ export default function ServiceCard({shift, serv_id}) {
           {!available && !is_full && <span style={{width:'100%'}} className='btn btn-danger btn-sm disabled btn-danger-color'>غیر قابل دسترس</span>}
           {is_full && <span style={{width:'100%'}} className='btn btn-danger btn-sm disabled '>پر شده</span> }
           <hr></hr>
-          <SelectTime id={shift.id} setIsFull={setIsFull} service_id={serv_id} setTime={setTime} setTimePicked={setTimePicked} showbtn={available && !is_full}/>
+          <SelectTime id={shift.id} setIsFull={setIsFull} service_id={serv_id} setTimet={setTime} setTimePicked={setTimePicked} showbtn={available && !is_full}/>
           <br/>
           {timePicked && <label className='float-right btn btn-outline-dark btn-sm mx-2 serviceCardTransitions'>{time}</label>}
-
         </div>
         {timePicked && <button className='btn btn-success serviceCardTransitions' onClick={handleReserve}>ذخیره</button>}
       </div>

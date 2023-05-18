@@ -3,6 +3,7 @@ import './ReservationItem'
 
 import { LocalUrl } from '../utils/constant'
 import { useFetch } from '../hooks/useFetch'
+import { Button, message, Popconfirm, Modal, QRCode } from 'antd';
 
 
 export default function ReservationItem({res_id, doc_id, shift_id, service_id, time_date, deleteItem, code, status}) {
@@ -17,11 +18,38 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
     const [sd, setSd] = useState('')
     const [passed, setPassed] = useState(false)
 
+    // qr code
+      const [isModalOpen, setIsModalOpen] = useState(false);
+      const showModal = () => {
+        setIsModalOpen(true);
+      };
+      const handleOk = () => {
+        setIsModalOpen(false);
+      };
+      const handleCancel = () => {
+        setIsModalOpen(false);
+      };
+    //end
+
+
+    // delete process 
+    const [open, setOpen] = useState(false);
+
+    const confirm = () => {
+      setOpen(false);
+      deleteData()
+      message.success('با موفقیت حذف شد');
+    };
+
+    const cancel = () => {
+      setOpen(false);
+    };
 
     const handleDelete = (e) => {
         e.preventDefault()
-        deleteData()
+        setOpen(true)
     }
+    // end of delete process
 
     useEffect(() => {
         if (data) {
@@ -64,6 +92,7 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
     },[service, shift, time_date])
 
   return (
+    <>
       <tr >
         <td>
           <div className="d-flex align-items-center">
@@ -95,8 +124,28 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
         </td>
 
         <td>
-          {!passed && <button type="button" class="btn btn-danger" onClick={(e) => handleDelete(e)}>حذف</button>}
+            <Popconfirm
+              title="حذف رزرو"
+              description="آیا می خواهید نوبت خود را حذف کنید؟"
+              open={open}
+              placement="right"
+              onConfirm={confirm}
+              onCancel={cancel}
+              okText="Yes"
+              cancelText="No"
+            >
+              {!passed && <button type="button" style={{margin: '10px',width:'100%'}} className="btn btn-danger" onClick={(e) => handleDelete(e)}>حذف</button>} 
+            </Popconfirm>
+            <button type="button" className="btn btn-danger" style={{margin: '10px', width:'100%'}} onClick={showModal}>QR</button>
         </td>
       </tr>
+      <Modal title="QR Code" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}
+        okButtonProps={{ hidden: true }}
+        cancelButtonProps={{ hidden: true }}>
+          <QRCode value={code}
+            style={{margin: 'auto auto'}}
+          />
+      </Modal>
+    </>
   )
 }

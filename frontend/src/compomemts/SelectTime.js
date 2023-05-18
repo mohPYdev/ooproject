@@ -9,8 +9,9 @@ import Modal from 'react-bootstrap/Modal';
 
 import { LocalUrl } from '../utils/constant'
 import { useFetch } from '../hooks/useFetch'
+import moment from 'moment';
 
-export default function SelectTime({id, service_id, setTime, setTimePicked, setIsFull,showbtn}) {
+export default function SelectTime({id, service_id, setTimet, setTimePicked, setIsFull,showbtn}) {
 
   const {data:freetimes} = useFetch(LocalUrl + `shifts/${id}/free_time/${service_id}/`)
   console.log(freetimes)
@@ -29,7 +30,10 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
 
 
   if (freetimes?.length === 1){
-    setTime(freetimes[0].start)
+    // let d = new Date(freetimes[0].start.slice(0,16))
+    // d.setTime (new Date(freetimes[0].start.slice(0,16)).getTime () + (8*60*60*1000))
+    // setTimet(d.toISOString().slice(0,16))
+    setTimet(freetimes[0].start)
     setTimePicked(true)
     return null
   }
@@ -47,33 +51,35 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
         </Modal.Header>
         <Modal.Body>
               <div className='row'>
-                {freetimes && freetimes.map((ft) => (
-                  <div key={ft.start} className="col-2 mx-2 ">
-                      <button
-                        className='btn btn-light btn-sm mt-2 mx-2 serviceCardTransitions'
-                        value={ft.start.slice(0,16)}
-                        onClick={(e) => {
-                          setTime(e.target.value);
-                          setShow(false);
-                          setTimePicked(true)
-                        }}>
-                          {/* {console.log(ft.start.slice(14,16))} */}
-                          {
-                            
-                          }
-                          {/* {console.log(ft.start.slice(11,13))} */}
-                          {new Intl.DateTimeFormat('en', {
-                              hour:"2-digit",
-                              minute:"2-digit"
-
-                          })
-                          .format(
-                            new Date(ft.start.slice(0,16)).setTime (new Date(ft.start.slice(0,16)).getTime () + (3*60*60*1000) + (30*60*1000)) // add 3 hours and 30 minutes
-                          )
-                          }
-                      </button>
-                  </div>
-                ))}
+                {freetimes && freetimes.map((ft) => {
+                    let d = new Date(ft.start.slice(0,16))
+                    d.setTime (new Date(ft.start.slice(0,16)).getTime () + (7*60*60*1000))
+                    // console.log(d.toISOString().slice(0,16))
+                    return (
+                      <div key={ft.start} className="col-2 mx-2 ">
+                          <button
+                            className='btn btn-light btn-sm mt-2 mx-2 serviceCardTransitions'
+                            value={d.toISOString().slice(0,16)}
+                            onClick={(e) => {
+                              setTimet(e.target.value);
+                              setShow(false);
+                              setTimePicked(true)
+                            }}>
+                              {new Intl.DateTimeFormat('en', {
+                                  hour:"2-digit",
+                                  minute:"2-digit"
+    
+                              })
+                              .format(
+                                new Date(d.toISOString().slice(0,16))
+                              )
+                              }
+                          </button>
+                      </div>
+                    )
+                }
+                )
+                }
 
               </div>
 
