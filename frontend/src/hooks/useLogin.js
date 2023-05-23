@@ -53,12 +53,7 @@ export const useLogin = () => {
 
       dispatch({ type: 'LOGIN', payload: res2.data })
 
-      // if (!isCancelled) {
-      //   setIsPending(false)
-      //   setError(null)
-      //   navigate('/home')
 
-      // }
       setTimeout(() => {
         setIsPending(false);
         setError(null)
@@ -74,9 +69,6 @@ export const useLogin = () => {
     }
   }
 
-  // useEffect(() => {
-  //   return () => setIsCancelled(true)
-  // }, [])
 
   return { login, isPending, error }
 }

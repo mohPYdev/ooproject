@@ -1,45 +1,95 @@
-import { render, screen, fireEvent, getByTestId } from '../testUtils';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { useNavigate } from 'react-router-dom';
 import Navbarc from './Navbarc';
-import { MemoryRouter } from "react-router-dom";
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useLogout } from '../hooks/useLogout';
 
-// import user from '@testing-library/user-event'
+jest.mock('react-router-dom', () => ({
+    useNavigate: jest.fn(),
+}));
 
-describe('Navbar', () => {
-    test('renders  component without crashing', () => {
-        render(<MemoryRouter ><Navbarc /></MemoryRouter>);
+jest.mock('../hooks/useAuthContext', () => ({
+    useAuthContext: jest.fn(),
+}));
+
+jest.mock('../hooks/useLogout', () => ({
+    useLogout: jest.fn(),
+}));
+
+describe('Navbarc component', () => {
+    beforeEach(() => {
+        useNavigate.mockClear();
+        useAuthContext.mockClear();
+        useLogout.mockClear();
     });
-    // Scenario 2 - Test if the Navbar component is rendered:
 
+    it('renders the navbar with links when user is authenticated', () => {
+        useNavigate.mockReturnValue(jest.fn());
+        useAuthContext.mockReturnValue({
+            user: {
+                email: 's@gmail.com',
+                id: 2,
+                username: 'negar',
+                phone_number: '3',
+            },
+        });
+        useLogout.mockReturnValue({
+            logout: jest.fn(),
+            error: null,
+            isPending: false,
+        });
 
-    test('renders component', () => {
-        const { getByRole } = render(<MemoryRouter ><Navbarc /></MemoryRouter>);
-        const navbar = getByRole('navigation');
-        expect(navbar).toBeInTheDocument();
+        render(<Navbarc />);
+
+        expect(screen.queryByText('بیمارستان')).not.toBeInTheDocument();
+        expect(screen.getByText('خانه')).toBeInTheDocument();
+        expect(screen.getByText('پروفایل')).toBeInTheDocument();
+        expect(screen.getByTestId('exit')).toBeInTheDocument();
     });
-    // Scenario 3 - Test if the Navbar.Brand component is rendered when the user is not logged in:
 
+    it('renders the navbar with links when user is not authenticated', () => {
+        useNavigate.mockReturnValue(jest.fn());
+        useAuthContext.mockReturnValue({
+            user: null,
+        });
+        useLogout.mockReturnValue({
+            logout: jest.fn(),
+            error: null,
+            isPending: false,
+        });
 
-    test('renders Navbar.Brand component when user is not logged in', () => {
-        const { getByText } = render(<MemoryRouter ><Navbarc isLoggedIn={false} /></MemoryRouter>);
-        const brand = getByText('بیمارستان');
-        expect(brand).toBeInTheDocument();
+        render(<Navbarc />);
+
+        expect(screen.getByText('بیمارستان')).toBeInTheDocument();
+        expect(screen.getByText('ثبت نام')).toBeInTheDocument();
+        expect(screen.getByText('ورود')).toBeInTheDocument();
     });
-    // Scenario 4 - Test if the Nav.Link components are rendered based on the user's authentication status:
-    test('renders Nav.Link components based on user authentication status', () => {
-        const { getByText, queryByText } = render(<MemoryRouter ><Navbarc isLoggedIn={false} /></MemoryRouter>);
-        const homeLink = queryByText('Home');
-        const loginLink = getByText('ورود');
-        expect(homeLink).not.toBeInTheDocument();
-        expect(loginLink).toBeInTheDocument();
+
+    it('calls logout and navigates to the home page when "خروج" link is clicked', () => {
+        const navigateMock = jest.fn();
+        const logoutMock = jest.fn();
+        useNavigate.mockReturnValue(navigateMock);
+        useAuthContext.mockReturnValue({
+            user: {
+                email: 's@gmail.com',
+                id: 2,
+                username: 'negar',
+                phone_number: '3',
+            },
+        });
+        useLogout.mockReturnValue({
+            logout: logoutMock,
+            error: null,
+            isPending: false,
+        });
+
+        render(<Navbarc />);
+        const exitLink = screen.getByTestId('exit');
+        exitLink.click();
+
+        expect(logoutMock).toHaveBeenCalled();
+        expect(navigateMock).toHaveBeenCalledWith('/');
     });
-    // test('calls handleClick function when Logout button is clicked', async () => {
-    //     // user.setup()
-    //     const handleClick = jest.fn();
-    //     const {  } = render(<MemoryRouter ><Navbarc isLoggedIn={true} handleClick={handleClick} /></MemoryRouter>);
-    //     const logoutButton = screen.getByRole("Nav.Link");
-    //     await user.click(logoutButton);
-    //     expect(handleClick).toHaveBeenCalledTimes(1);
-    //   });
+});
 
-
-})

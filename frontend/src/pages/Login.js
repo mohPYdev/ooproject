@@ -36,7 +36,7 @@ function Login() {
             <h3 className='fw-bold'>ورود</h3>
             <div className="mb-3">
               <label className='fw-bold'>نام کاربری</label>
-              <input type="text" className="form-control text-end" placeholder="نام کاربری"
+              <input type="text" className="form-control text-end" placeholder="نام کاربری" data-testid="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
@@ -47,6 +47,7 @@ function Login() {
                 type="password"
                 className="form-control text-end"
                 placeholder="رمز عبور"
+                data-testid="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

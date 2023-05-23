@@ -1,14 +1,9 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import Login from '../pages/Login'
-import SignUp from '../pages/SignUp';
-import Reservation from '../pages/Reservation';
 import { useAuthContext } from '../hooks/useAuthContext'
-import Home from '../pages/Home';
-import Profile from  '../pages/Profile'
 import { useLogout} from '../hooks/useLogout'
 
 export default function Navbarc() {
@@ -16,12 +11,14 @@ export default function Navbarc() {
   const navigate = useNavigate()
 
   const {user} = useAuthContext()
-  const {logout } = useLogout()
+
+  const { logout, error, isPending } = useLogout()
 
   const handleClick = () => {
     logout()
     navigate('/')
   }
+
 
   return (
         <>

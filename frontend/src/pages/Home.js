@@ -7,7 +7,7 @@ import ItemCard from '../compomemts/ItemCard';
 import { LocalUrl } from '../utils/constant';
 
 
-const Home = () => {
+const Home = (props) => {
 
     const {data, isPending, error} = useFetch(LocalUrl + "services/")
     const [items, setItems] = useState([])
@@ -16,7 +16,10 @@ const Home = () => {
         if (data)
             setItems(data)
     },[data])
+    useEffect(()=>{
+        console.log(props)
 
+      },[])
     return (
         <div data-testid='home' className='home'>
             <div className='container'>
