@@ -52,9 +52,7 @@ export default function Reservation() {
         <div className='row'>
           {shifts && shifts.results?.map((item) => (
           // {doctor && doctor.services.map((item) => (
-            <div key={item.id} className='col-md-4'>
-              <ServiceCard shift={item} serv_id={id} />
-            </div>
+            <ServiceCard shift={item} serv_id={id} key={item.id}/>
           ))}
         </div>
         <div className='container d-flex justify-content-center mt-2'>

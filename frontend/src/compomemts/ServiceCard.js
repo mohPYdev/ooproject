@@ -95,8 +95,11 @@ export default function ServiceCard({shift, serv_id}) {
     }
   },[navigate, res])
 
-  return (
+  // for search
+  const [show , setshow] = useState(false)
 
+  return (
+    <div className='col-md-4' hidden={!show}>
       <div className="card text-end">
         <div className="card-body">
           {/* <Navbar className='bg-light'>
@@ -107,7 +110,7 @@ export default function ServiceCard({shift, serv_id}) {
           </Navbar>
           <br/> */}
 
-          <ShowItem doc_id={shift?.item} />
+          <ShowItem doc_id={shift?.item} setshow={setshow}/>
           {available && !is_full && <span style={{width:'100%'}} className='btn btn-success btn-sm disabled btn-success-color'>در دسترس</span>}
           {!available && !is_full && <span style={{width:'100%'}} className='btn btn-danger btn-sm disabled btn-danger-color'>غیر قابل دسترس</span>}
           {is_full && <span style={{width:'100%'}} className='btn btn-danger btn-sm disabled '>پر شده</span> }
@@ -118,5 +121,6 @@ export default function ServiceCard({shift, serv_id}) {
         </div>
         {/* {timePicked && <button className='btn btn-success serviceCardTransitions' onClick={handleReserve}>ذخیره</button>} */}
       </div>
+    </div>
   )
 }

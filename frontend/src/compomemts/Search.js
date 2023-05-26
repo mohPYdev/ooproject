@@ -19,6 +19,7 @@ export default function Search() {
             nav(`/home?q=${se}`)
             :
             nav(`${location.pathname}?q=${se}`)
+        window.location.reload()
     }
   return (
         <>
