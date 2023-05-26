@@ -6,16 +6,33 @@ import { useFetch } from '../hooks/useFetch';
 import ItemCard from '../compomemts/ItemCard';
 import { LocalUrl } from '../utils/constant';
 
+import { useLocation } from 'react-router-dom'
+
 
 const Home = () => {
 
+    
     const {data, isPending, error} = useFetch(LocalUrl + "services/")
     const [items, setItems] = useState([])
 
+    // for serach
+    const queryurl = useLocation().search
+    const queryparam = new URLSearchParams(queryurl)
+    let query = queryparam.get('q')
+
+    if (!query)
+        query = ""
+
+    query = query.toUpperCase()
+
+    const filterprofile = s => (s.name.toUpperCase().includes(query))
+
+    //end
+
     useEffect(() => {
         if (data)
-            setItems(data)
-    },[data])
+            setItems(data.filter(filterprofile))
+    },[data, query])
 
     return (
         <div className='home'>
