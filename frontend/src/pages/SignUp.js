@@ -36,7 +36,7 @@ function SignUp() {
   return (<>
     {isPending ?
       (
-        <div className="loader-container">
+        <div data-testid='loader' className="loader-container">
           <div className="spinner"></div>
         </div>
       ) :

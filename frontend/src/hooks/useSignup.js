@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -6,7 +6,6 @@ import { LocalUrl,RequestTimeOut } from "../utils/constant";
 
 export const useSignup = () => {
   const navigate = useNavigate()
-  const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
 
@@ -57,5 +56,5 @@ export const useSignup = () => {
   //   return () => setIsCancelled(true);
   // }, []);
 
-  return { signup, error, isPending };
+  return  { signup, error, isPending };
 };

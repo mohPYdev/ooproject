@@ -24,6 +24,7 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
         setIsFull(true)
       }
     }
+    // console.log(freetimes)
   }, [freetimes])
 
 
@@ -45,10 +46,10 @@ export default function SelectTime({id, service_id, setTime, setTimePicked, setI
           <Modal.Title >زمان های در دسترس</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-              <div className='row'>
+              <div className='row' >
                 {freetimes && freetimes.map((ft) => (
                   <div key={ft.start} className="col-2 mx-2 ">
-                      <button
+                      <button data-testid='free-times'
                         className='btn btn-light btn-sm mt-2 mx-2 serviceCardTransitions'
                         value={ft.start.slice(0,16)}
                         onClick={(e) => {

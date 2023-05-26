@@ -3,12 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import './ServiceCard.css'
 
 import SelectTime from './SelectTime';
-import Payment from './Payment';
 import { LocalUrl } from '../utils/constant'
 import { useFetch } from '../hooks/useFetch'
 import ShowItem from './ShowItem';
 
-import Navbar from 'react-bootstrap/Navbar'
 
 export default function ServiceCard({shift, serv_id}) {
 
@@ -91,13 +89,6 @@ export default function ServiceCard({shift, serv_id}) {
 
       <div className="card text-end">
         <div className="card-body">
-          {/* <Navbar className='bg-light'>
-            <h5 className="card-title">{date}</h5>
-          </Navbar>
-          <Navbar className=''>
-            <h6 className="card-subtitle mb-2 text-muted">{start_t} - {end_t}</h6>
-          </Navbar>
-          <br/> */}
 
           <ShowItem doc_id={shift?.item} />
           {available && !is_full && <span className='btn btn-success btn-sm disabled btn-success-color'>در دسترس</span>}
