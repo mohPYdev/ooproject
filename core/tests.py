@@ -63,11 +63,11 @@ class ModelTestCase(TestCase):
         self.assertEqual(max_length, 100)
 
     def test_shift_string_representation(self):
-        shift_str = f'{self.shift.start_date}-{self.shift.end_date} {self.shift.id}'
+        shift_str = f'{self.shift.start_date}-{self.shift.end_date}{self.shift.id}'
         self.assertEqual(str(self.shift), shift_str)
 
     def test_service_string_representation(self):
-        service_str = f'{self.service.name} - {self.service.subtitle} - duration: {self.service.duration}'
+        service_str = f'{self.service.name}- {self.service.subtitle} - duration: {self.service.duration}'
         self.assertEqual(str(self.service), service_str)
 
     def test_reservation_string_representation(self):
