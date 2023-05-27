@@ -40,7 +40,7 @@ function SignUp() {
           <div className="spinner"></div>
         </div>
       ) :
-      <div className="auth-wrapper signup text-end">
+      <div data-testid='signup-page' className="auth-wrapper signup text-end">
         <div className="auth-inner" id='form'>
           <form onSubmit={handleSubmit} className='p-3 bg-white rounded-3'>
             <h3 className='text-center fw-bold'>ثبت نام</h3>

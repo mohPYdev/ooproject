@@ -30,7 +30,7 @@ function Login() {
       </div>
     ) :
 
-      <div className="auth-wrapper login text-end">
+      <div data-testid='login-page' className="auth-wrapper login text-end">
         <div className="auth-inner">
           <form onSubmit={handleSubmit}>
             <h3 className='fw-bold'>ورود</h3>

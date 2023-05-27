@@ -41,7 +41,7 @@ export default function ResetPassConfirm() {
     }, [data])
 
   return (
-    <div className="auth-wrapper login">
+    <div data-testid='resetpassconfirm-page' className="auth-wrapper login">
       <div className="auth-inner">
         <p>Please enter your new password</p>
         <form className='mt-3' onSubmit={handleSubmit}>

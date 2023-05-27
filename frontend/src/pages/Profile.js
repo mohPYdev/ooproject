@@ -23,7 +23,7 @@ export default function Profile() {
   }, [reservations])
 
   return (
-    <div className='profile text-end'>
+    <div data-testid='profile-page' className='profile text-end'>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-5">

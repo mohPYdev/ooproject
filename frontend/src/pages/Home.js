@@ -21,7 +21,7 @@ const Home = (props) => {
 
       },[])
     return (
-        <div data-testid='home' className='home'>
+        <div data-testid='home-page' className='home'>
             <div className='container'>
                 <div className='row'>
                     {items ? items.map((doc) => (

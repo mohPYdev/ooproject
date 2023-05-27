@@ -22,12 +22,12 @@ export default function Navbarc() {
 
   return (
         <>
-          <Navbar bg="dark" variant="dark" >
+          <Navbar data-testid='navbar' bg="dark" variant="dark" >
             <Container>
             {!user ?<Navbar.Brand href={'/'}>بیمارستان</Navbar.Brand> : <></>}
               <Nav className="me-auto">
                 {user ? <Nav.Link href={'/home'}>خانه</Nav.Link> : <></>}
-                {!user ? <Nav.Link href={'/signup'}>ثبت نام</Nav.Link> : <></>}
+                {!user ? <Nav.Link data-testid='signup-link' href={'/signup'}>ثبت نام</Nav.Link> : <></>}
                 {!user ? <Nav.Link href={'/login'}>ورود</Nav.Link> : <></>}
                 {user ? <Nav.Link href={'/profile'}>پروفایل</Nav.Link> : <></>}
                 {user ? <Nav.Link data-testid='exit' onClick={handleClick}>خروج</Nav.Link> : <></>}

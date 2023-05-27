@@ -68,7 +68,7 @@ export default function ReservationItem({res_id, doc_id, shift_id, service_id, t
         <td>
           <div className="d-flex align-items-center">
 
-            <div className="ms-3">
+            <div data-testid='reservation-item' className="ms-3">
         <p className="fw-bold mb-1">{item?.first_name}  {item?.last_name}</p>
               <p className="text-muted mb-0">{item?.category}</p>
             </div>

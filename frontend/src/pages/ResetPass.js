@@ -31,14 +31,14 @@ export default function ResetPass() {
 
 
   return (
-    <div className="auth-wrapper login">
+    <div data-testid='resetpass-page' className="auth-wrapper login">
       <div className="auth-inner">
         {data && <h4>check your email</h4>}
         {!data && <>
           <p>Please enter your email address</p>
-          <form className='mt-3' onSubmit={handleSubmit}>
+          <form className='mt-3'  onSubmit={handleSubmit}>
               <input className='form-control' type='text' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='email'/>
-              <button className='btn btn-dark mt-3' type='submit'>Submit</button>
+              <button className='btn btn-dark mt-3' data-testid='submit-button' type='submit'>Submit</button>
           </form>
         </>}
       </div>

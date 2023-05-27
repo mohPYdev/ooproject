@@ -12,12 +12,10 @@ import ResetPass from './pages/ResetPass';
 import ResetPassConfirm from './pages/ResetPassConfirm';
 import { useEffect } from 'react';
 
-function App(props) {
-  const { user, authIsReady } = useAuthContext()
-  useEffect(()=>{
-    console.log(props)
 
-  },[])
+function App() {
+  const { user, authIsReady } = useAuthContext()
+
   return (
 
       <BrowserRouter>

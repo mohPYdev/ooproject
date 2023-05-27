@@ -40,7 +40,7 @@ export default function Reservation() {
   }, [shifts, page_number])
 
   return (
-    <div className='reservation'>
+    <div data-testid='reservation-page' className='reservation'>
       <div className='container'>
         <div className='d-flex justify-content-center mt-4'>
         </div>
