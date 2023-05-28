@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Itemcard from './Itemcard';
+import ItemCard from './ItemCard';
 import { AuthContext } from '../context/AuthContext';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
@@ -25,7 +25,7 @@ const service ={
     price: 10,
     duration: '1 hour',
   }
-describe('Itemcard', () => {
+describe('ItemCard', () => {
     beforeEach(() => {
         useFetch.mockReturnValue({
             data: service,
@@ -41,14 +41,14 @@ describe('Itemcard', () => {
         });
     const id = 1;
 
-    // render(<Itemcard id={id} />, {
+    // render(<ItemCard id={id} />, {
     //     // Provide a custom context value for useAuthContext
     //     // to mock the user data
     //     wrapper: ({ children }) => (
     //         <AuthContext.Provider value={{ data }}>{children}</AuthContext.Provider>
     //     ),
     // });
-    render(<MemoryRouter><Itemcard /></MemoryRouter>);
+    render(<MemoryRouter><ItemCard /></MemoryRouter>);
     expect(screen.getByText(service.name)).toBeInTheDocument();
     expect(screen.getByText(service.subtitle)).toBeInTheDocument();
     expect(screen.getByText(service.price)).toBeInTheDocument();
@@ -63,7 +63,7 @@ describe('Itemcard', () => {
         price: 10,
         duration: '1 hour',
       }
-    render(<Itemcard id={id} />, {
+    render(<ItemCard id={id} />, {
         // Provide a custom context value for useAuthContext
         // to mock the user data
         wrapper: ({ children }) => (
