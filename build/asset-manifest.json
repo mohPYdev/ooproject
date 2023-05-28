@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1cd0baa7.css",
+    "main.js": "/static/js/main.c2d34742.js",
+    "static/js/787.c45db304.chunk.js": "/static/js/787.c45db304.chunk.js",
+    "static/media/health-still-life-with-copy-space.jpg": "/static/media/health-still-life-with-copy-space.545ba1710754d6815e5d.jpg",
+    "index.html": "/index.html",
+    "main.1cd0baa7.css.map": "/static/css/main.1cd0baa7.css.map",
+    "main.c2d34742.js.map": "/static/js/main.c2d34742.js.map",
+    "787.c45db304.chunk.js.map": "/static/js/787.c45db304.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1cd0baa7.css",
+    "static/js/main.c2d34742.js"
+  ]
+}
