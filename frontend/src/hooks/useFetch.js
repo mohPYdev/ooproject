@@ -54,7 +54,7 @@ export const useFetch = (url , method = 'GET') => {
       try {
         const res = await fetch(url, {...fetchOptions, headers: headers , signal: controller.signal })
         const jres = await res.json()
-        console.log(jres)
+        // console.log(jres)
         setIsPending(false)
         setData(jres)
         setError(null)

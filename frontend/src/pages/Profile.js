@@ -68,7 +68,7 @@ export default function Profile() {
                 <table className="table align-middle mb-0 mt-5 bg-white">
                   <thead className="bg-light">
                     <tr>
-                      <th>محصول</th>
+                      <th>دکتر</th>
                       <th>سرویس</th>
                       <th>زمان</th>
                       <th>کد تائید</th>
