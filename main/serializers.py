@@ -2,6 +2,8 @@ from rest_framework import serializers
 from djoser.serializers import UserCreateSerializer, UserSerializer
 from core.models import Item, Shift, Reservation, Service, Category
 from django.contrib.auth import get_user_model
+import logging
+logger = logging.getLogger(__name__)
 
 User = get_user_model()
 
@@ -20,8 +22,10 @@ class CustomUserCreateSerializer(UserCreateSerializer):
     def validate(self, attrs):
         attrs = super().validate(attrs)
         if attrs['email'] == '':
+            logger.warning("validatin email:{e} failed for user:{u}".format(e=attrs['email'], u=self.Meta.model))
             raise serializers.ValidationError("Email is required")
         if User.objects.filter(email=attrs['email']).exists():
+            logger.warning("validatin email:{e} failed for user:{u}".format(e=attrs['email'], u=self.Meta.model))
             raise serializers.ValidationError("Email already exists")
         return attrs
 

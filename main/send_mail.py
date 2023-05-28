@@ -1,6 +1,8 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import logging
+logger = logging.getLogger(__name__)
 
 import globals
 
@@ -30,3 +32,5 @@ def send_mail(html,text='Email_body',subject='Hello word',from_email='',to_email
     server.login(username,password)
     server.sendmail(from_email,to_emails,msg_str)
     server.quit()
+    
+    logger.info("email(body:{}, subject:{}) sends from email:{} to emails:{}".format(text, subject, from_email, to_emails))

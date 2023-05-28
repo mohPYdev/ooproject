@@ -238,9 +238,7 @@ class SerializerTestCase(TestCase):
         # self.assertTrue(serializer.is_valid())
         serializer.is_valid()
         validated_data = serializer.validated_data
-        # self.assertEqual(validated_data['username'], 'newuser')
-        # self.assertEqual(validated_data['email'], 'newuser@example.com')
-        # self.assertEqual(validated_data['phone_number'], '0987654321')
+ 
 
     def test_time_serializer(self):
         data = {'time': datetime.time(hour=9, minute=30)}
@@ -253,58 +251,3 @@ class SerializerTestCase(TestCase):
 
         self.assertEqual(validated_data['time'], datetime.time(hour=9, minute=30))
 
-
-# Add the following tests to the SerializerTestCase class
-
-    # def test_custom_user_serializer(self):
-    #     serializer = CustomUserSerializer(instance=self.user)
-    #     expected_fields = ['id', 'username', 'email', 'first_name', 'last_name', 'phone_number']
-    #     self.assertEqual(set(serializer.data.keys()), set(expected_fields))
-
-    # def test_custom_user_create_serializer(self):
-    #     data = {
-    #         'username': 'newuser',
-    #         'email': 'newuser@example.com',
-    #         'password': 'newpassword',
-    #         'phone_number': '0987654321',
-    #     }
-    #     serializer = CustomUserCreateSerializer(data=data)
-    #     self.assertTrue(serializer.is_valid())
-    #     validated_data = serializer.validated_data
-    #     self.assertEqual(validated_data['username'], 'newuser')
-    #     self.assertEqual(validated_data['email'], 'newuser@example.com')
-    #     self.assertEqual(validated_data['phone_number'], '0987654321')
-
-    # def test_time_serializer(self):
-    #     data = {'time': datetime.time(hour=9, minute=30)}
-    #     serializer = TimeSerializer(data=data)
-    #     self.assertTrue(serializer.is_valid())
-    #     validated_data = serializer.validated_data
-    #     self.assertEqual(validated_data['time'], datetime.time(hour=9, minute=30))
-
-
-
-# #----------------------sending email -------------------------------
-
-# from django.test import TestCase
-# from unittest.mock import patch
-# from . import send_mail
-
-# class EmailSendingTestCase(TestCase):
-#     @patch('smtplib.SMTP')
-#     def test_send_mail(self, mock_smtp):
-#         from_email = 'sender@example.com'
-#         to_emails = ['recipient@example.com']
-#         subject = 'Test Email'
-#         html = 'ABC123'
-
-#         send_mail(html, subject=subject, from_email=from_email, to_emails=to_emails)
-
-#         # Assert that the SMTP instance was called with the correct arguments
-#         mock_smtp.assert_called_once_with(host='smtp.gmail.com', port=587)
-#         smtp_instance = mock_smtp.return_value
-#         smtp_instance.ehlo.assert_called_once()
-#         smtp_instance.starttls.assert_called_once()
-#         smtp_instance.login.assert_called_once_with(username=globals.USERNAME, password=globals.PASSWORD)
-#         smtp_instance.sendmail.assert_called_once_with(from_email, to_emails, mock_smtp.return_value.sendmail.return_value)
-#         smtp_instance.quit.assert_called_once()

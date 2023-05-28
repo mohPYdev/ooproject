@@ -10,6 +10,8 @@ from django.db.models import Q
 from django.contrib.auth import get_user_model
 from main.send_mail import send_mail
 import globals
+import logging
+logger = logging.getLogger(__name__)
 
 User = get_user_model()
 
@@ -29,6 +31,7 @@ class ShiftViewSet(viewsets.ModelViewSet):
     def service(self, request, pk):
         service = Service.objects.get(pk=pk)
         shifts = service.shift_set.filter(start_date__gte=datetime.now()).order_by('-start_date')
+        logger.info("user with id:{id} gets shifts of service:{serv}".format(id=request.user.id, serv=service))
 
         page = self.paginate_queryset(shifts)
         if page is not None:
@@ -60,7 +63,8 @@ class ShiftViewSet(viewsets.ModelViewSet):
         while x+service.duration <= shift.end_date:
             available_times.append({'start': x}) 
             x = x + service.duration
-      
+
+        logger.info("user with id:{id} gets of service:{serv} and calculate available_times:{ft}".format(id=request.user.id, serv=service, ft=available_times))
         return Response(available_times)
 
 

@@ -4,7 +4,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import m2m_changed
 from django.utils.crypto import get_random_string
 import datetime
-
+import logging
+logger = logging.getLogger(__name__)
 
 
 def get_random_string_me():
@@ -151,6 +152,7 @@ def update_item(sender, instance, action, **kwargs):
                     shift = instance,
                 )
 
+                logger.info("shift:{} updated based on {}".format(s, instance.services.all()))
                 for t in instance.services.all():
                     s.services.add(t)
 
