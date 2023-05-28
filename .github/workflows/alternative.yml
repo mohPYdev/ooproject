@@ -1,0 +1,27 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - frontend-test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Run tests
+        run: npm run test
+
+      - name: Deploy
+        run: |
+          # Add deployment commands here
