@@ -6,15 +6,15 @@ function Itemcard({id}) {
     return (
         <div class="card text-center">
             <div class="card-header">
-            {service?.name} : نام
+            {service?.name}
             </div>
             <div class="card-body">
-                <h5 class="card-title">{service?.subtitle} : نوع </h5>
-                <p class="card-text">قیمت : {service?.price}</p>
-                <Link to={`/reservation/${id}`} className="btn btn-primary">انتخاب</Link>
+                <h5 class="card-title">{service?.subtitle}</h5>
+                <p class="card-text"> {service?.price}</p>
+                {/* <Link to={`/reservation/${id}`} className="btn btn-primary">انتخاب</Link> */}
             </div>
             <div class="card-footer text-body-secondary">
-            مدت زمان : {service?.duration}
+          {service?.duration}
             </div>
         </div>
 

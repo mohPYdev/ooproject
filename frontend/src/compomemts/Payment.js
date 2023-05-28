@@ -29,7 +29,7 @@ export default function Payment({
           <Modal.Title>Payment</Modal.Title>
         </Modal.Header>
         {service && <Modal.Body>
-            <h1>{service?.price}$</h1>
+            <h1>{service?.price}</h1>
             <input className='form-control' type='text' placeholder='Enter payment code' value={pay_code} onChange={(e) => setPayCode(e.target.value) }/>
         </Modal.Body>}
         <Modal.Footer>
