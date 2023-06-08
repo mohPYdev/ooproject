@@ -1,12 +1,10 @@
-import React from 'react'
+import React ,{ useState}  from 'react'
 import './SignUp.css'
-import Alert from 'react-bootstrap/Alert'
-import { useSignup } from '../hooks/useSignup'
-import { useNavigate } from 'react-router-dom'
-import { useState } from 'react';
+import {useSignup } from '../hooks/useSignup'
+import  Alert  from 'react-bootstrap/Alert';
 
 function SignUp() {
-  const navigate = useNavigate()
+  // const Alert = React.lazy(()=>import('react-bootstrap/Alert'))
   const { signup, isPending, error } = useSignup()
   const [fname,
     setFname] = useState('');

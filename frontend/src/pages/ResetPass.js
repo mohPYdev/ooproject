@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import {useFetch} from '../hooks/useFetch'
 import {LocalUrl} from '../utils/constant'
 
 export default function ResetPass() {

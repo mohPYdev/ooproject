@@ -2,17 +2,16 @@ import React, { useEffect, useState } from 'react'
 import './SelectTime.css'
 import './ServiceCard.css'
 
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-
 import { LocalUrl } from '../utils/constant'
 import { useFetch } from '../hooks/useFetch'
-import {  message, Popconfirm} from 'antd';
 
 export default function SelectTime({setdor,id, service_id, setTimet, setTimePicked, setIsFull,showbtn}) {
-
+  const Button = React.lazy(() => import('react-bootstrap/Button'))
+  const Modal = React.lazy(()=>import('react-bootstrap/Modal'))
+  const message = React.lazy(()=>import('antd'))
+  const Popconfirm = React.lazy(()=>import('antd'))
   const [a , seta] = useState("")
-  // reserve process 
+  // reserve process
   const [tmp , settmp] = useState(null)
 
   const confirm = (e) => {
@@ -49,7 +48,7 @@ export default function SelectTime({setdor,id, service_id, setTimet, setTimePick
     setTimePicked(true)
     return null
   }
-  
+
 
   return (
     <>
@@ -93,7 +92,7 @@ export default function SelectTime({setdor,id, service_id, setTimet, setTimePick
                               {new Intl.DateTimeFormat('en', {
                                   hour:"2-digit",
                                   minute:"2-digit"
-    
+
                               })
                               .format(
                                 new Date(d.toISOString().slice(0,16))
@@ -101,7 +100,7 @@ export default function SelectTime({setdor,id, service_id, setTimet, setTimePick
                               }
                           </button>
                         </Popconfirm>
-                          
+
                       </div>
                     )
                 }

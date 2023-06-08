@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-
+import { useFetch } from '../hooks/useFetch'
 import './Profile.css'
 import { useAuthContext } from '../hooks/useAuthContext'
-import { useFetch } from '../hooks/useFetch'
 import { LocalUrl } from '../utils/constant'
-import ReservationItem from '../compomemts/ReservationItem'
 
 export default function Profile() {
 
   const { user } = useAuthContext()
   const { data: reservations } = useFetch(LocalUrl + "reservations/")
   const [reserveList, setReserveList] = useState([])
+  const ReservationItem = reserveList ? React.lazy(()=>import('../compomemts/ReservationItem')) : null
+
 
   const deleteItem = (id) => {
     setReserveList((reserveList) => reserveList.filter((i) => i.id !== id))

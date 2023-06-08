@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useFetch } from '../hooks/useFetch'
+
 import { LocalUrl } from '../utils/constant'
-
+import { useParams  , useNavigate} from 'react-router-dom'
 export default function ResetPassConfirm() {
-
     const {token , uid} = useParams()
     const [new_password, setNewPass] = useState('')
     const [data, setData] = useState(false)

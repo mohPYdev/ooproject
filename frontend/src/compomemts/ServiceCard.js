@@ -1,17 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
 import './ServiceCard.css'
 
-import SelectTime from './SelectTime';
-import Payment from './Payment';
 import { LocalUrl } from '../utils/constant'
 import { useFetch } from '../hooks/useFetch'
-import ShowItem from './ShowItem';
-
-import Navbar from 'react-bootstrap/Navbar'
-
+import { useNavigate } from 'react-router-dom'
 export default function ServiceCard({shift, serv_id}) {
-
+  const SelectTime = React.lazy(()=>import('./SelectTime'))
+  const ShowItem = React.lazy(()=>import('./ShowItem'))
   const navigate = useNavigate()
 
   const {data: res, postData} = useFetch(LocalUrl + "reservations/", "POST")
@@ -86,7 +81,7 @@ export default function ServiceCard({shift, serv_id}) {
     }
   },[shift])
 
-  
+
 
 
   useEffect(() => {

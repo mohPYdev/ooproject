@@ -1,19 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './Reservation.css'
-
-import { useParams } from 'react-router-dom'
-import Pagination from 'react-bootstrap/Pagination';
-import SelectTime from '../compomemts/SelectTime'
-import ServiceCard from '../compomemts/ServiceCard';
-import { useFetch } from '../hooks/useFetch';
+import { useParams } from 'react-router-dom';
 import { LocalUrl } from '../utils/constant';
-
+import { useFetch } from '../hooks/useFetch';
 export default function Reservation() {
 
-  const {id} = useParams()
+  const Pagination = React.lazy(()=>import('react-bootstrap/Pagination'))
+  const { id } = useParams()
   const [page_number, setPageNumber] = useState(1)
   const [items, setItems] = useState([])
-  const {data: shifts} = useFetch(LocalUrl + `shifts/${id}/service/?page=${page_number}`)
+  const { data: shifts } = useFetch(LocalUrl + `shifts/${id}/service/?page=${page_number}`)
+  const ServiceCard = shifts ? React.lazy(()=>import('../compomemts/ServiceCard')) : null
+
   // const {data: doctor} = useFetch(LocalUrl + `doctors/${id}/`)
 
   const handleClick = (e) => {
@@ -32,11 +30,11 @@ export default function Reservation() {
       );
     }
     setItems(items)
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }
 
   useEffect(() => {
-    if (shifts){
+    if (shifts) {
       calculatePages(shifts.count)
     }
   }, [shifts, page_number])
@@ -51,8 +49,8 @@ export default function Reservation() {
         {shifts?.results?.length === 0 && <h3 className='d-flex justify-content-center text-white mt-5'>اکنون در دسترس نیست !</h3>}
         <div className='row'>
           {shifts && shifts.results?.map((item) => (
-          // {doctor && doctor.services.map((item) => (
-            <ServiceCard shift={item} serv_id={id} key={item.id}/>
+            // {doctor && doctor.services.map((item) => (
+            <ServiceCard shift={item} serv_id={id} key={item.id} />
           ))}
         </div>
         <div className='container d-flex justify-content-center mt-2'>

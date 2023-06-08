@@ -1,8 +1,12 @@
-import { useFetch } from '../hooks/useFetch';
+import React from 'react';
 import { LocalUrl } from '../utils/constant';
-import { Link } from 'react-router-dom'
+import { useFetch } from '../hooks/useFetch';
+import {Link }from 'react-router-dom';
 function Itemcard({id}) {
+
+
     const {data:service, isPending, error} = useFetch(LocalUrl + `services/${id}/`)
+    // const Link = React.lazy(()=>import('react-router-dom'))
     return (
         <div className="card text-center">
             <div className="card-header">

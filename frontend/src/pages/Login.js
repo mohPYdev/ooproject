@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css'
-import Alert from 'react-bootstrap/Alert'
-
-import { useLogin } from '../hooks/useLogin'
-
+import { useLogin } from '../hooks/useLogin';
+import  Alert  from 'react-bootstrap/Alert';
 function Login() {
   const { login, isPending, error } = useLogin()
 

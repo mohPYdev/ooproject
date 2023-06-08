@@ -1,28 +1,29 @@
 import React, {useState} from 'react'
 import './Payment.css'
 
-import Modal from 'react-bootstrap/Modal';
-import { useFetch } from '../hooks/useFetch';
+// import Modal from 'react-bootstnprap/Modal';
 import { LocalUrl } from '../utils/constant';
-
+import { useFetch } from '../hooks/useFetch';
 export default function Payment({
     serv_id,
     handleReserve,
     setPayCode,
     pay_code,
   }){
-
     const {data:service} = useFetch(LocalUrl + `services/${serv_id}/`)
+
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const Modal = show ? React.lazy(() => import('react-bootstrap/Modal')) : null;
 
     return (
     <div className='payment hello'>
       <button className='btn btn-primary btn-block' onClick={handleShow}>
         Payment
       </button>
+
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
