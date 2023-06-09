@@ -1,37 +1,37 @@
-.card-img-top{
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
+.card-img-top {
+  max-height: 100%;
+  max-width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.img-container{
-    padding: 1em;
-    height:12em;
-    width: 250px;
+.img-container {
+  padding: 1em;
+  height: 12em;
+  width: 250px;
 }
-
 
 .float-right {
-    float: right;
-    width: auto !important;
+  float: right;
+  width: auto !important;
 }
 
-.btn-success-color{
-    background-color: rgb(0, 77, 0) !important;
+.btn-success-color {
+  background-color: rgb(0, 77, 0) !important;
 }
 
-.btn-danger-color{
-    background-color: rgb(207, 22, 22) !important;
-    opacity: 0.9 !important;
+.btn-danger-color {
+  background-color: rgb(207, 22, 22) !important;
+  opacity: 0.9 !important;
 }
 
-.serviceCardTransitions{
-    -webkit-transition: -webkit-transform 0.5s, opacity 2s, width 5s;
-    transition: width 5s;
+.serviceCardTransitions {
+  transition: width 5s;
 }
-.serviceCardTransitions:hover{
-    width: 100%;
-    align-self: center;
-    opacity: 0.5;
-    transform: rotateY(360deg);
-}
+
+.serviceCardTransitions:hover {
+  width: 100%;
+  align-self: center;
+  opacity: 0.5;
+  transform: rotateY(360deg);
+}/*# sourceMappingURL=ServiceCard.css.map */
