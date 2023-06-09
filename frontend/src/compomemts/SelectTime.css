@@ -1,12 +1,11 @@
-.modal-header{
-    background-color: rgb(134, 198, 244);
+.modal-header {
+  background-color: rgb(134, 198, 244);
 }
-
 .modal-header .btn-close {
-    padding: 0.5rem 0.5rem;
-    /* margin: -0.5rem auto -0.5rem -0.5rem; */
+  padding: 0.5rem;
+  /* margin: -btn-close-padding() auto -btn-close-padding() -btn-close-padding() */
 }
 
-.chooseTime{
-    width: 100%;
-}
+.chooseTime {
+  width: 100%;
+}/*# sourceMappingURL=SelectTime.css.map */

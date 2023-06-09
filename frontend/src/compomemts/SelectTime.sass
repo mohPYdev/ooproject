@@ -1,0 +1,22 @@
+$modal-header-bg-color: rgb(134, 198, 244)
+$btn-close-padding: 0.5rem
+$choose-time-width: 100%
+
+@function modal-header-bg-color()
+  @return $modal-header-bg-color
+
+@function btn-close-padding()
+  @return $btn-close-padding
+
+@function choose-time-width()
+  @return $choose-time-width
+
+.modal-header
+  background-color: modal-header-bg-color()
+
+  .btn-close
+    padding: btn-close-padding()
+    /* margin: -btn-close-padding() auto -btn-close-padding() -btn-close-padding() */
+
+.chooseTime
+  width: choose-time-width()

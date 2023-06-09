@@ -1,0 +1,17 @@
+$modal-margin: auto
+$btn-width: 100%
+
+@function modal-margin()
+  @return $modal-margin
+
+@function btn-width()
+  @return $btn-width
+
+.modal-footer
+  margin: modal-margin()
+
+.modal-body
+  margin: modal-margin()
+
+.btn-block
+  width: btn-width()
