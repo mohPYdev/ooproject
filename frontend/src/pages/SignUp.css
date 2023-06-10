@@ -1,17 +1,17 @@
-.signup .auth-inner{
-    width: 700px;
-  }
-
-.signup{
-    margin-top: 0px !important;
+.signup {
+  margin-top: 0px !important;
+}
+.signup .auth-inner {
+  width: 700px;
 }
 
-#form{
+#form {
   position: absolute;
   top: 50%;
   left: 25%;
   transform: translate(0, -50%);
 }
+
 .loader-container {
   width: 100%;
   height: 100vh;
@@ -34,9 +34,9 @@
 
 @keyframes spin-anim {
   0% {
-      transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-      transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-}
+}/*# sourceMappingURL=SignUp.css.map */
