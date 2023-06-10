@@ -1,59 +1,59 @@
-$font-url: url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800')
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600,700,800')
+
 $primary-color: #1C8EF9
-$background-image-url: url("../public/health-still-life-with-copy-space.jpg")
+$background-image: url("../public/health-still-life-with-copy-space.jpg")
 $background-color: #AAD6D7
-$box-shadow-color: rgba(34, 35, 58, 0.2)
-$btn-text-color: rgb(245, 245, 245)
-$btn-bg-color: rgb(17, 16, 16)
-$btn-border-color: black
+$font-family: 'Fira Sans', sans-serif
 
-@import $font-url
+@function darken-color($color, $amount)
+  @return darken($color, $amount)
 
-* {
+@mixin size($width, $height: null)
+  width: $width
+  @if $height
+    height: $height
+
+@mixin background-size($size)
+  background-size: $size
+  @include prefixer(background-size, $size)
+
+@mixin flex-center
+  display: flex
+  justify-content: center
+  align-items: center
+
+*
   box-sizing: border-box
-}
 
-body {
-  /* background: #1C8EF9 !important */
-  background: $background-image-url no-repeat
+body
+  background: $background-image no-repeat
   background-color: $background-color
-  background-size: 100%
-  min-height: 100vh
-  /* display: flex */
+  @include size(100%, 100vh)
   font-weight: 400
-  font-family: 'Fira Sans', sans-serif
-  /* padding-top: 60px */
-}
+  font-family: $font-family
 
-h1, h2, h3, h4, h5, h6, label, span {
+h1, h2, h3, h4, h5, h6, label, span
   font-weight: 500
-  font-family: 'Fira Sans', sans-serif
-}
+  font-family: $font-family
 
-body, html, .App, #root, .auth-wrapper {
-  width: 100%
-  height: 100%
-}
+body, html, .App, #root, .auth-wrapper
+  @include size(100%, 100%)
 
-.navbar-light {
-  background-color: #ffffff;
-  box-shadow: 0px 14px 80px $box-shadow-color;
-}
+.navbar-light
+  background-color: #ffffff
+  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2)
 
-.btn {
-  color: $btn-text-color !important;
-  background-color: $btn-bg-color !important;
-  border-color: $btn-border-color !important;
-}
+.btn
+  color: #f5f5f5 !important
+  background-color: darken-color($primary-color, 10%) !important
+  border-color: black !important
 
-/* Chrome, Safari, Edge, Opera */
+// Chrome, Safari, Edge, Opera
 input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
+input::-webkit-inner-spin-button
+  -webkit-appearance: none
+  margin: 0
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-}
+// Firefox
+input[type=number]
+  -moz-appearance: textfield
