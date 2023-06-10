@@ -1,31 +1,20 @@
 $primary-color: #167bff
+$secondary-color: #7f7d7d
 $box-shadow-color: rgba(34, 35, 58, 0.2)
-$margin-top-multiplier: 3rem
-$width-multiplier: 550px
+$transition-duration: 0.3s
+$container-width: 550px
+$container-padding: 35px 55px
 
-@function calculate-margin-top($value)
-  @return $value * $margin-top-multiplier
-
-@function calculate-width($value)
-  @return $value * $width-multiplier
-
-.auth-wrapper
-  $margin-top: calculate-margin-top(1)
-  margin-top: $margin-top
+@mixin flex-center
   display: flex
   justify-content: center
+  align-items: center
+
+.auth-wrapper
+  margin-top: 3rem
+  @include flex-center
   flex-direction: column
   height: 100%
-
-  .auth-inner
-    $width: calculate-width(1)
-    width: $width
-    margin: auto
-    background: #ffffff
-    box-shadow: 0px 14px 80px $box-shadow-color
-    padding: 35px 55px 35px 55px
-    border-radius: 15px
-    transition: all .3s
 
   .form-control:focus
     border-color: $primary-color
@@ -45,14 +34,23 @@ $width-multiplier: 550px
     text-align: left
     font-size: 13px
     padding-top: 10px
-    color: #7f7d7d
+    color: $secondary-color
     margin: 0
 
-  .forgot-password a
-    color: $primary-color
+    a
+      color: $primary-color
 
   .login
     margin-top: 0px !important
+
+.auth-inner
+  width: $container-width
+  margin: auto
+  background: #ffffff
+  box-shadow: 0px 14px 80px $box-shadow-color
+  padding: $container-padding
+  border-radius: 15px
+  transition: all $transition-duration
 
 .btn:hover
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.171)
