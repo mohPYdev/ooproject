@@ -23,6 +23,14 @@ export default function ServiceCard({shift, serv_id}) {
   const [time,
     setTime] = useState(null);
 
+    const [dor , setdor] = useState(false)
+
+    useEffect(() => {
+      if(dor){
+        handleReserve()
+      }
+    },[dor])
+
 
 
 
@@ -73,10 +81,10 @@ export default function ServiceCard({shift, serv_id}) {
       if (!shift.is_available) {
         setAvailable(false)
       }
-
     }
   },[shift])
 
+  
 
 
   useEffect(() => {
@@ -85,22 +93,25 @@ export default function ServiceCard({shift, serv_id}) {
     }
   },[navigate, res])
 
-  return (
+  // for search
+  const [show , setshow] = useState(false)
 
+  return (
+    <div className='col-md-4' hidden={!show}>
       <div className="card text-end">
         <div className="card-body">
 
-          <ShowItem doc_id={shift?.item} />
-          {available && !is_full && <span className='btn btn-success btn-sm disabled btn-success-color'>در دسترس</span>}
-          {!available && !is_full && <span className='btn btn-danger btn-sm disabled btn-danger-color'>غیر قابل دسترس</span>}
-          {is_full && <span className='btn btn-danger btn-sm disabled '>پر شده</span> }
+          <ShowItem doc_id={shift?.item} setshow={setshow}/>
+          {available && !is_full && <span style={{width:'100%'}} className='btn btn-success btn-sm disabled btn-success-color'>در دسترس</span>}
+          {!available && !is_full && <span style={{width:'100%'}} className='btn btn-danger btn-sm disabled btn-danger-color'>غیر قابل دسترس</span>}
+          {is_full && <span style={{width:'100%'}} className='btn btn-danger btn-sm disabled '>پر شده</span> }
           <hr></hr>
-          {available && !is_full && <SelectTime id={shift.id} setIsFull={setIsFull} service_id={serv_id} setTime={setTime} setTimePicked={setTimePicked} /> }
+          <SelectTime setdor={setdor} id={shift.id} setIsFull={setIsFull} service_id={serv_id} setTimet={setTime} setTimePicked={setTimePicked} showbtn={available && !is_full}/>
           <br/>
-          {timePicked && <label className='float-right btn btn-outline-dark btn-sm mx-2 serviceCardTransitions'>{time}</label>}
-
+          {/* {timePicked && <label className='float-right btn btn-outline-dark btn-sm mx-2 serviceCardTransitions'>{time}</label>} */}
         </div>
-        {timePicked && <button className='btn btn-success serviceCardTransitions' onClick={handleReserve}>ذخیره</button>}
+        {/* {timePicked && <button className='btn btn-success serviceCardTransitions' onClick={handleReserve}>ذخیره</button>} */}
       </div>
+    </div>
   )
 }

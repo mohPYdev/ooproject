@@ -48,9 +48,8 @@ export default function Reservation() {
         {shifts?.results?.length === 0 && <h3 className='d-flex justify-content-center text-white mt-5'>اکنون در دسترس نیست !</h3>}
         <div className='row'>
           {shifts && shifts.results?.map((item) => (
-            <div key={item.id} className='col-md-4'>
-              <ServiceCard data-testid='service-card' shift={item} serv_id={id} />
-            </div>
+          // {doctor && doctor.services.map((item) => (
+            <ServiceCard shift={item} serv_id={id} key={item.id}/>
           ))}
         </div>
         <div className='container d-flex justify-content-center mt-2'>

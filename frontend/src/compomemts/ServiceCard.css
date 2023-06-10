@@ -28,10 +28,9 @@
 .serviceCardTransitions {
   transition: width 5s;
 }
-
-.serviceCardTransitions:hover {
-  width: 100%;
-  align-self: center;
-  opacity: 0.5;
-  transform: rotateY(360deg);
-}/*# sourceMappingURL=ServiceCard.css.map */
+.serviceCardTransitions:hover{
+    /* width: 100%; */
+    /* align-self: center; */
+    opacity: 0.5;
+    /* transform: rotateY(360deg); */
+}

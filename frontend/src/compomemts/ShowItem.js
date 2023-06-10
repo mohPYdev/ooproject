@@ -1,11 +1,36 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useFetch } from '../hooks/useFetch'
 import { LocalUrl } from '../utils/constant'
 import './ShowItem.css'
+import { useLocation } from 'react-router-dom'
 
-export default function ShowItem({doc_id}) {
+export default function ShowItem({doc_id , setshow}) {
 
     const {data:item} = useFetch(LocalUrl + `items/${doc_id}/`)
+
+    //search
+    const queryurl = useLocation().search
+    const queryparam = new URLSearchParams(queryurl)
+    let query = queryparam.get('q')
+
+    if (!query)
+        query = ""
+
+    query = query.toUpperCase()
+    //
+    useEffect(() => {
+      if (item)
+          if (
+            (item.name.toUpperCase().includes(query)) ||
+            (item.first_name.toUpperCase().includes(query)) ||
+            (item.last_name.toUpperCase().includes(query)) ||
+            (item.phone_number.toUpperCase().includes(query))
+            ){
+              setshow(true)
+              console.log("hoyeeeee")
+            }
+    },[item, query])
+    
 
   return (
     <div>
