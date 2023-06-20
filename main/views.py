@@ -11,6 +11,14 @@ from django.contrib.auth import get_user_model
 from main.send_mail import send_mail
 import globals
 import logging
+
+from main.decorators import login_authentication_decorator, logging_info_decorator,\
+                            throttle_decorator, cache_decorator, permission_decorator
+
+from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
+
+
+
 logger = logging.getLogger(__name__)
 
 User = get_user_model()
@@ -20,6 +28,24 @@ class ItemViewSet(viewsets.ModelViewSet):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
     permission_classes = [IsAuthenticated]
+
+
+    @login_authentication_decorator
+    @logging_info_decorator
+    @permission_decorator([IsAuthenticated])
+    @throttle_decorator([AnonRateThrottle, UserRateThrottle])
+    @cache_decorator(cache_timeout=3600)  #cache for 1 hour
+    def list(self, request, *args, **kwargs):
+        queryset = self.filter_queryset(self.get_queryset())
+
+        queryset = self.paginate_queryset(queryset)
+        if queryset is not None:
+            serializer = self.get_serializer(queryset, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
 
 class ShiftViewSet(viewsets.ModelViewSet):
     queryset = Shift.objects.all()
