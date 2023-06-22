@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { LocalUrl } from "../utils/constant";
-import { useSelector, useDispatch } from "react-redux";
-import { loginAction } from "../context/actions";
+import {  useDispatch } from "react-redux";
+import { loginAction } from "../redux/actions";
 export const useLogout = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);

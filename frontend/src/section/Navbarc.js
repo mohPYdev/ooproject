@@ -7,7 +7,7 @@ import Search from "../compomemts/Search";
 import { useSelector } from "react-redux";
 
 export default function Navbarc() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.authentication.user);
   const { logout } = useLogout();
 
   const handleClick = () => {

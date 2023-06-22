@@ -1,13 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 
 import { LocalUrl, RequestTimeOut } from "../utils/constant";
-import { loginAction } from "../context/actions";
+import { loginAction } from "../redux/actions";
 
 export const useLogin = () => {
-  const [isCancelled, setIsCancelled] = useState(false);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const dispatch = useDispatch();

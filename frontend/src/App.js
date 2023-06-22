@@ -1,8 +1,7 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
-import ItemCard from "./compomemts/ItemCard";
-import ItemList from "./section/ItemList";
+
 import Home from "./pages/Home";
 import Navbarc from "./section/Navbarc";
 import { useSelector, useDispatch } from "react-redux";
@@ -14,11 +13,11 @@ import ResetPass from "./pages/ResetPass";
 import ResetPassConfirm from "./pages/ResetPassConfirm";
 import { useEffect } from "react";
 import axios from "axios";
-import { authentication } from "./context/actions";
+import { authentication } from "./redux/actions";
 function App() {
-  const user = useSelector((state) => state.user);
+  const user = useSelector((state) => state.authentication.user);
   const dispatch = useDispatch();
-  const authIsReady = useSelector((state) => state.authIsReady);
+  const authIsReady = useSelector((state) => state.authentication.authIsReady);
   useEffect(() => {
     const user = localStorage.getItem("user");
     const token = localStorage.getItem("token");

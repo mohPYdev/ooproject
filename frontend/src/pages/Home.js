@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 // import './Home.css'
-import { useFetch } from "../hooks/useFetch";
 import { LocalUrl } from "../utils/constant";
+import { useFetch } from "../hooks/useFetch";
 import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { fetchServices, useGetServicesQuery } from "../services/WebApi";
 
 const Home = () => {
   const dispatch = useDispatch();
-  // const { data, isLoading, isError, error } = useGetServicesQuery();
+  const { data } = useGetServicesQuery();
 
-  const { data, isPending, error } = useFetch(LocalUrl + "services/");
+  // const { data, isPending, error } = useFetch(LocalUrl + "services/");
   const [items, setItems] = useState([]);
 
   // for serach
@@ -25,18 +25,10 @@ const Home = () => {
 
   const filterprofile = (s) => s.name.toUpperCase().includes(query);
 
-  //end
-  // useEffect(() => {
-  //   dispatch(fetchServices());
-  //   if (isLoading) {
-  //     return <div>Loading services...</div>;
-  //   }
 
-  //   if (isError) {
-  //     return <div>Error: {error}</div>;
-  //   }
-  // }, [dispatch]);
-
+  useEffect(() => {
+    dispatch(fetchServices());
+  }, [dispatch]);
   useEffect(() => {
     if (data) setItems(data.filter(filterprofile));
   }, [data, query]);
