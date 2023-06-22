@@ -1,54 +1,72 @@
-
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 // import './Home.css'
-import { useFetch } from '../hooks/useFetch';
-import { LocalUrl } from '../utils/constant';
-import { useLocation } from 'react-router-dom';
+import { useFetch } from "../hooks/useFetch";
+import { LocalUrl } from "../utils/constant";
+import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchServices, useGetServicesQuery } from "../services/WebApi";
 
 const Home = () => {
-    const { data, isPending, error } = useFetch(LocalUrl + "services/")
-    const [items, setItems] = useState([])
+  const dispatch = useDispatch();
+  // const { data, isLoading, isError, error } = useGetServicesQuery();
 
-    // for serach
+  const { data, isPending, error } = useFetch(LocalUrl + "services/");
+  const [items, setItems] = useState([]);
 
-    const queryurl = useLocation().search
-    const queryparam = new URLSearchParams(queryurl)
-    let query = queryparam.get('q')
+  // for serach
 
-    if (!query)
-        query = ""
+  const queryurl = useLocation().search;
+  const queryparam = new URLSearchParams(queryurl);
+  let query = queryparam.get("q");
 
-    query = query.toUpperCase()
+  if (!query) query = "";
 
-    const filterprofile = s => (s.name.toUpperCase().includes(query))
+  query = query.toUpperCase();
 
-    //end
+  const filterprofile = (s) => s.name.toUpperCase().includes(query);
 
-    useEffect(() => {
-        if (data)
-            setItems(data.filter(filterprofile))
+  //end
+  // useEffect(() => {
+  //   dispatch(fetchServices());
+  //   if (isLoading) {
+  //     return <div>Loading services...</div>;
+  //   }
 
-    }, [data, query])
+  //   if (isError) {
+  //     return <div>Error: {error}</div>;
+  //   }
+  // }, [dispatch]);
 
-    const ItemCard = items ? React.lazy(()=>import('../compomemts/ItemCard')) : null
+  useEffect(() => {
+    if (data) setItems(data.filter(filterprofile));
+  }, [data, query]);
 
-    return (
-        <div className='home'>
-            <div className='container'>
-                <div className='row'>
-                    {items ? items.map((doc) => (
-                        <div className='col-md-4 ' style={{
-                            width: '18rem',
-                            margin: '40px'
-                        }} key={doc.id}>
+  const ItemCard = items
+    ? React.lazy(() => import("../compomemts/ItemCard"))
+    : null;
 
-                            <ItemCard id={doc.id} />
-                        </div>
-                    )) : null}
+  return (
+    <div className="home">
+      <div className="container">
+        <div className="row">
+          {items
+            ? items.map((doc) => (
+                <div
+                  className="col-md-4 "
+                  style={{
+                    width: "18rem",
+                    margin: "40px",
+                  }}
+                  key={doc.id}
+                >
+                  <ItemCard id={doc.id} />
                 </div>
-            </div>
+              ))
+            : null}
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
 
 export default Home;

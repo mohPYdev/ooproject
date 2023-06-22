@@ -1,50 +1,46 @@
-import { useEffect, useState } from 'react'
-import { useAuthContext } from './useAuthContext'
-import axios from 'axios'
-import { LocalUrl } from '../utils/constant'
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { LocalUrl } from "../utils/constant";
+import { useSelector, useDispatch } from "react-redux";
+import { loginAction } from "../context/actions";
 export const useLogout = () => {
-  const [isCancelled, setIsCancelled] = useState(false)
-  const [error, setError] = useState(null)
-  const [isPending, setIsPending] = useState(false)
-  const { dispatch} = useAuthContext()
-
-  const LOGOUT_URL = LocalUrl +  "auth/token/logout/"
+  const [isCancelled, setIsCancelled] = useState(false);
+  const [error, setError] = useState(null);
+  const [isPending, setIsPending] = useState(false);
+  const dispatch = useDispatch();
+  const LOGOUT_URL = LocalUrl + "auth/token/logout/";
 
   const logout = async () => {
-    setError(null)
-    setIsPending(true)
+    setError(null);
+    setIsPending(true);
 
     try {
-
-      await axios.post(LOGOUT_URL)
+      await axios.post(LOGOUT_URL);
 
       // Clear the user from local storage and headers
-      localStorage.removeItem('user')
-      localStorage.removeItem('token')
-      delete axios.defaults.headers.common['Authorization']
-
+      localStorage.removeItem("user");
+      localStorage.removeItem("token");
+      delete axios.defaults.headers.common["Authorization"];
 
       // dispatch logout action
-      dispatch({ type: 'LOGOUT' })
+      dispatch(loginAction());
 
       // update state
       if (!isCancelled) {
-        setIsPending(false)
-        setError(null)
+        setIsPending(false);
+        setError(null);
       }
-    }
-    catch(err) {
+    } catch (err) {
       if (!isCancelled) {
-        setError(err.message)
-        setIsPending(false)
+        setError(err.message);
+        setIsPending(false);
       }
     }
-  }
+  };
 
   useEffect(() => {
-    return () => setIsCancelled(true)
-  }, [])
+    return () => setIsCancelled(true);
+  }, []);
 
-  return { logout, error, isPending }
-}
+  return { logout, error, isPending };
+};
