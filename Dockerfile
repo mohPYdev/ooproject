@@ -15,6 +15,6 @@ COPY *requirements.txt ./
 
 RUN pip3 install -r prod-requirements.txt
 
-COPY pollgram_back/ .
+COPY ./ .
 
 ENTRYPOINT [ "/code/conf/entrypoint.sh" ]
