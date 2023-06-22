@@ -5,7 +5,7 @@ services:
     build:
       context: ../..
       dockerfile: conf/Dockerfile
-    command: gunicorn SinaHospital.wsgi:application --bind 0.0.0.0:8000
+    command: gunicorn SinaHospital.wsgi:application --bind 0.0.0.0:8000 --workers=5
     volumes:
       - static_volume:/code/static/
       - media_volume:/code/media/
